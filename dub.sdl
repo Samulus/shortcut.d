@@ -1,0 +1,3 @@
+name "shortcut"
+author "Samuel Vargas"
+dependency "sdlang-d" version="~>0.9.5"

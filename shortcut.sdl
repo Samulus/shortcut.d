@@ -1,0 +1,33 @@
+variables:system {
+   hello_from "Hello From Linux!" "linux"
+   numcpu `cat /proc/cpuinfo | awk '/^cpu cores/{print $4}' | tail -1 | tr -d '\n'` "linux" eval=on
+   numcpu `echo %NUMBER_OF_PROCESSORS%` "win64" "win32" eval=on
+}
+
+language:lua {
+   linux  "/usr/bin/lua"
+	win32 `"C:\Program Files (x86)\Lua\5.1\lua.exe"`
+	win64 `"C:\Program Files (x86)\Lua\5.1\lua.exe"`
+
+   variables:lua {
+      demo "benis"
+   }
+
+   program:hello {
+      win32 `"C:\Users\sam\Desktop\lol spaces\demo.lua"` `$lua.demo $system.numcpu` normalize=true
+      win64 `"C:\Users\sam\Desktop\lol spaces\demo.lua"` `$lua.demo $system.numcpu` normalize=true
+   }
+}
+
+language:java {
+  linux `/usr/bin/java` 
+  win32 `c:\program files (x86)\jre\java\bin\java.exe`
+  win64 `c:\program files\jre\java\bin\java.exe` 
+  osx    "java" 
+
+  variables:java {
+      java "java is great"
+  }
+
+  program:hello "" "linux"
+}
