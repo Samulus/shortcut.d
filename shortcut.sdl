@@ -10,7 +10,7 @@ language:lua {
 	win64 `"C:\Program Files (x86)\Lua\5.1\lua.exe"`
 
    variables:lua {
-      demo "benis"
+      demo "hello from lua"
    }
 
    program:hello {
